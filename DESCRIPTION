@@ -5,8 +5,11 @@ Authors@R: person("Pedro", "Russo",
 		email = "pedro.russo@usp.br", 
 		role=c("aut", "cre"))	
 Description: This package is intended to unify the most commonly used functions in the CSBL. 
+Imports:
+	data.table,
+	stats
 Suggests:
-	data.table
+	CEMiTool
 Depends: R (>= 3.3.1)
 License: GPL-3
 Encoding: UTF-8

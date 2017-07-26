@@ -1,5 +1,4 @@
 #' @import data.table
-#' @importFrom CEMiTool expr
 
 .datatable.aware <- TRUE
 #' Collapse redundant probes into gene symbols
@@ -21,7 +20,6 @@
 #' @return Object of class \code{data.frame} or \code{data.table}
 #' 
 #' @examples
-
 #' # Create mock probe expression data
 #' mock <- CEMiTool::expr
 #' mock$Symbol <- rownames(mock)
@@ -33,39 +31,42 @@
 #' mock <- rbind(mock, mock2)
 #' mock <- mock[order(mock$Symbol), ]
 #' rownames(mock) <- paste0("probe_", rownames(mock))
-
+#'
 #' # Collapse redundant probes
 #' expr_col <- collapse_rows(mock, probe_col="rownames", gene_col="Symbol", method="max_mean")
+#' 
+#' @rdname collapse_rows 
+#' @export
 
-collapse_rows <- function(expr, probe_col, gene_col, data_table=F, method=c("max_mean", "min_mean", "col_mean", "col_median")){
-    if(length(grep('data.table', installed.packages())) == 0){
-        install.packages('data.table')
-        require(data.table)
-    }else if(length(grep('data.table', search())) == 0){
-        suppressPackageStartupMessages(require(data.table))
+collapse_rows <- function(expr, probe_col, gene_col, data_table=FALSE, method=c("max_mean", "min_mean", "col_mean", "col_median")){
+    if(!requireNamespace("data.table", quietly=TRUE)){
+		stop("Package data.table is required for this function to work. Please install it.",
+			 call. = FALSE)
+    }else{
+        suppressPackageStartupMessages(requireNamespace("data.table"))
     }
     
     if (probe_col == "rownames"){
-        expr <- data.table(expr, keep.rownames=T)
+        expr <- data.table(expr, keep.rownames=TRUE)
         setnames(expr, "rn", "rownames")
     }else{
         expr <- data.table(expr)
     }
     
     if(method=="max_mean" | method=="min_mean"){ 
-        expr[, rowmean := rowMeans(.SD[, !c(probe_col, gene_col), with=F])]
+        expr[, rowmean := rowMeans(.SD[, !c(probe_col, gene_col), with=FALSE])]
         if(method=="max_mean"){
-            res <- expr[order(rowmean, decreasing=T)][, .SD[1], by=gene_col][, rowmean:=NULL]
+            res <- expr[order(rowmean, decreasing=TRUE)][, .SD[1], by=gene_col][, rowmean:=NULL]
         }
         else if(method=="min_mean"){
-            res <- expr[order(rowmean, decreasing=T)][, .SD[.N], by=gene_col][, rowmean:=NULL]
+            res <- expr[order(rowmean, decreasing=TRUE)][, .SD[.N], by=gene_col][, rowmean:=NULL]
         }
     }
     else if(method=="col_mean"){
-        res <- expr[, lapply(.SD[, !c(probe_col), with=F], mean), by=gene_col]
+        res <- expr[, lapply(.SD[, !c(probe_col), with=FALSE], mean), by=gene_col]
     }
     else if(method=="col_median"){
-        res <- expr[, lapply(.SD[, !c(probe_col), with=F], median), by=gene_col]   
+        res <- expr[, lapply(.SD[, !c(probe_col), with=FALSE], median), by=gene_col]   
     }
     else stop("method must be 'max_mean', 'min_mean', 'col_mean' or 'col_median'\n")
     

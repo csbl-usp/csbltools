@@ -1,3 +1,6 @@
+#' @importFrom stats median sd
+NULL
+
 #' Expression and variance filtering
 #' 
 #' This function allows you to filter a gene expression dataset

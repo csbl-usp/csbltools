@@ -4,7 +4,7 @@
 \alias{collapse_rows}
 \title{Collapse redundant probes into gene symbols}
 \usage{
-collapse_rows(expr, probe_col, gene_col, data_table = F,
+collapse_rows(expr, probe_col, gene_col, data_table = FALSE,
   method = c("max_mean", "min_mean", "col_mean", "col_median"))
 }
 \arguments{
@@ -42,6 +42,8 @@ mock2$Symbol <- mock$Symbol
 mock <- rbind(mock, mock2)
 mock <- mock[order(mock$Symbol), ]
 rownames(mock) <- paste0("probe_", rownames(mock))
+
 # Collapse redundant probes
 expr_col <- collapse_rows(mock, probe_col="rownames", gene_col="Symbol", method="max_mean")
+
 }
