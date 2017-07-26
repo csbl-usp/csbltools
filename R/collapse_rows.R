@@ -1,3 +1,7 @@
+#' @import data.table
+#' @importFrom CEMiTool expr
+
+.datatable.aware <- TRUE
 #' Collapse redundant probes into gene symbols
 #'
 #' This function collapses redundant probe expression rows into single rows
