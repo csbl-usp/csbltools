@@ -1,4 +1,4 @@
-language: r
+language: R
 r: bioc-devel
 cache: packages
 Remotes: csbl-usp/CEMiTool
