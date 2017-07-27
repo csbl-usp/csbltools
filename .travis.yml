@@ -1,4 +1,4 @@
 language: r
 r: bioc-devel
 cache: packages
-r_github_packages: csbl-usp/CEMiTool
+Remotes: csbl-usp/CEMiTool
