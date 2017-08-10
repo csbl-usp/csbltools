@@ -1,0 +1,14 @@
+---
+name: Sample Annotation Table Format
+delimiter: '\t'
+columns:
+    - description: Sample identifier
+      name: 'ID'
+      type: character
+      required: TRUE
+      count: 1
+
+    - description: Classes columns 
+      type: factor
+      required: TRUE
+      count: NULL
