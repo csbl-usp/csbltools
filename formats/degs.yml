@@ -23,5 +23,5 @@ columns:
     - description: Adjusted p-value for DEG analysis 
       name: 'adj.P.val'
       type: numeric
-      required: TRUE
+      required: FALSE 
       count: 1
