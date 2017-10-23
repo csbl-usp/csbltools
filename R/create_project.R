@@ -1,6 +1,6 @@
 #' Create a CSBL project directory with the standard structure
-#' 
-#' This function will create a directory with the standard folders for 
+#'
+#' This function will create a directory with the standard folders for
 #' a project in the CSBL: data, intermediate, results and src.
 #'
 #' @param directory The path into which the folders should be created.
@@ -10,8 +10,10 @@
 #'
 #' @examples
 #' # Create project file structure
+#' \dontrun{
 #' create_project(directory <- "~/test", force=FALSE)
-#' 
+#' }
+#'
 #' @rdname create_project
 #' @export
 

@@ -6,8 +6,7 @@ Authors@R: person("Pedro", "Russo",
 		role=c("aut", "cre"))	
 Description: This package is intended to unify the most commonly used functions in the CSBL. 
 Imports:
-	data.table,
-	stats
+	data.table,	stats, clusterProfiler, fgsea
 Suggests:
 	CEMiTool
 Depends: R (>= 3.3.1)

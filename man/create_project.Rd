@@ -15,11 +15,13 @@ create_project(directory, force = FALSE)
 An appropriate file environment for CSBL projects
 }
 \description{
-This function will create a directory with the standard folders for 
+This function will create a directory with the standard folders for
 a project in the CSBL: data, intermediate, results and src.
 }
 \examples{
 # Create project file structure
+\dontrun{
 create_project(directory <- "~/test", force=FALSE)
+}
 
 }
