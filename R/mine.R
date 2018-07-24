@@ -34,8 +34,8 @@ PLATFORM_TECHNOLOGIES <- c(
     NA
 )
 
-#EXPERIMET_TYPES <- unique(unlist(strsplit(dbGetQuery(geo_con, 'SELECT type FROM gse')[[1]], ';\t')))
-EXPERIMET_TYPES <- c(
+#EXPERIMENT_TYPES <- unique(unlist(strsplit(dbGetQuery(geo_con, 'SELECT type FROM gse')[[1]], ';\t')))
+EXPERIMENT_TYPES <- c(
     'Expression profiling by array',
     'Expression profiling by genome tiling array',
     'Expression profiling by high throughput sequencing',
