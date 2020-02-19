@@ -1,0 +1,27 @@
+---
+name: Differentially Expressed Genes Table Format
+delimiter: '\t'
+columns:
+    - description: Gene or probe identifier
+      name: 'ID'
+      type: character
+      required: TRUE
+      count: 1
+
+    - description: Log2 transform for comparison fold change
+      name: 'logFC'
+      type: numeric
+      required: TRUE
+      count: 1
+
+    - description: P-value for DEG analysis
+      name: 'P.value'
+      type: numeric
+      required: TRUE
+      count: 1
+
+    - description: Adjusted p-value for DEG analysis 
+      name: 'adj.P.val'
+      type: numeric
+      required: FALSE 
+      count: 1
