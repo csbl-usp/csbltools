@@ -18,7 +18,7 @@
 #' search_multiple_names(vector_of_interest, query_vector = query, return_index = TRUE)
 
 
-search_multiple_names <- function(vector_of_interest, query_vector, perl = TRUE, return_index = FALSE) {
+search_multiple_names <- function(vector_of_interest, query_vector, ...) {
   return(
     grep(pattern = paste(query_vector, collapse = "|"), x = vector_of_interest, perl = perl, value = !return_index)
   )
