@@ -20,6 +20,6 @@
 search_multiple_names <- function(vector_of_interest, query_vector, return_index = FALSE, ...) {
   query_string <- paste(query_vector, collapse = "|")
   return(
-    grep(pattern = query_string, x = vector_of_interest, perl = TRUE, value = !return_index)
+    grep(pattern = query_string, x = vector_of_interest, perl = TRUE, value = !return_index, ...)
   )
 }
